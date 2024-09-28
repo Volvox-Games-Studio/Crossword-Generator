@@ -1,0 +1,14 @@
+{
+  "name": "com.volvox.crossword_generator",
+  "version": "1.0.0",
+  "displayName": "Crossword Generator",
+  "description": "An Open-source Crossword Generator.",
+  "documentationUrl": "https://github.com/Volvox-Games-Studio/Crossword-Generator/blob/master/README.md",
+  "changelogUrl": "https://github.com/Volvox-Games-Studio/Crossword-Generator/releases",
+  "licensesUrl": "https://github.com/Volvox-Games-Studio/Crossword-Generator/blob/master/LICENSE",
+  "author": {
+    "name": "Volvox Games",
+    "email": "info@volvoxgames.com",
+    "url": "https://www.volvoxgames.com"
+  }
+}
