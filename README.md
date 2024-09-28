@@ -4,4 +4,4 @@
 
 ### Setup
 
-- add to UPM by this git url: `https://github.com/Volvox-Games-Studio/Crossword-Generator/tree/master/Src`
+- add to UPM by this git url: `https://github.com/Volvox-Games-Studio/Crossword-Generator.git?path=Src/`
