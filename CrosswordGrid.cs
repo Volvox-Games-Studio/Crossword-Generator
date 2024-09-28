@@ -16,55 +16,6 @@ public class CrosswordGrid
     {
         return Math.Abs(m_SizeX - m_SizeY);
     }
-    
-    public void Print()
-    {
-        var matrix = new char[m_SizeX, m_SizeY];
-
-        for (var y = 0; y < m_SizeY; y++)
-        {
-            for (var x = 0; x < m_SizeX; x++)
-            {
-                matrix[x, y] = ' ';
-            }
-        }
-        
-        foreach (var word in m_Words)
-        {
-            for (var i = 0; i < word.Text.Length; i++)
-            {
-                var x = word.X + (word.IsVertical ? 0 : i);
-                var y = word.Y + (word.IsVertical ? i : 0);
-
-                matrix[x, y] = word.Text[i];
-            }
-        }
-
-        var output = "============== WORDS ==============\n";
-
-        foreach (var word in m_Words)
-        {
-            output += $"{word}\n";
-        }
-        
-        output += "============== MAP ==============\n";
-        
-        for (var y = 0; y < m_SizeY; y++)
-        {
-            output += "|";
-            
-            for (var x = 0; x < m_SizeX; x++)
-            {
-                output += $"{matrix[x, y]}|";
-            }
-
-            output += "\n";
-        }
-
-        output += $"Size: [{m_SizeX}x{m_SizeY}]";
-        
-        Console.WriteLine(output);
-    }
 
     public void FixPositions()
     {
@@ -165,6 +116,55 @@ public class CrosswordGrid
         }
 
         return allPossibilities;
+    }
+
+    public override string ToString()
+    {
+        var matrix = new char[m_SizeX, m_SizeY];
+
+        for (var y = 0; y < m_SizeY; y++)
+        {
+            for (var x = 0; x < m_SizeX; x++)
+            {
+                matrix[x, y] = ' ';
+            }
+        }
+        
+        foreach (var word in m_Words)
+        {
+            for (var i = 0; i < word.Text.Length; i++)
+            {
+                var x = word.X + (word.IsVertical ? 0 : i);
+                var y = word.Y + (word.IsVertical ? i : 0);
+
+                matrix[x, y] = word.Text[i];
+            }
+        }
+
+        var output = "============== WORDS ==============\n";
+
+        foreach (var word in m_Words)
+        {
+            output += $"{word}\n";
+        }
+        
+        output += "============== MAP ==============\n";
+        
+        for (var y = 0; y < m_SizeY; y++)
+        {
+            output += "|";
+            
+            for (var x = 0; x < m_SizeX; x++)
+            {
+                output += $"{matrix[x, y]}|";
+            }
+
+            output += "\n";
+        }
+
+        output += $"Size: [{m_SizeX}x{m_SizeY}]";
+
+        return output;
     }
 
 

@@ -4,33 +4,7 @@ public static class CrosswordGenerator
 {
     public static bool TryGenerateFromWords(string[] words, out CrosswordGrid grid)
     {
-        for (var i = 0; i < words.Length; i++)
-        {
-            words[i] = words[i].ToUpper();
-        }
-        
-        var grids = new List<CrosswordGrid>();
-        var permutations = GeneratePermutations(words);
-
-        foreach (var permutation in permutations)
-        {
-            var candidates = new List<CrosswordGrid>();
-            
-            if (TryGenerateFromWordPermutation(permutation, candidates))
-            {
-                foreach (var candidate in candidates)
-                {
-                    candidate.FixPositions();
-                    grids.Add(candidate);
-                    //candidate.Print();
-                    //Console.WriteLine("=========================");
-                }
-                
-                continue;
-            }
-            
-            //Console.WriteLine("fail");
-        }
+        var grids = GenerateAllFromWords(words);
 
         if (grids.Count <= 0)
         {
@@ -38,8 +12,6 @@ public static class CrosswordGenerator
             
             return false;
         }
-        
-        Console.WriteLine($"Found {grids.Count} levels.");
         
         grid = grids[0];
 
@@ -53,6 +25,32 @@ public static class CrosswordGenerator
         }
 
         return true;
+    }
+
+    public static List<CrosswordGrid> GenerateAllFromWords(string[] words)
+    {
+        for (var i = 0; i < words.Length; i++)
+        {
+            words[i] = words[i].ToUpper();
+        }
+        
+        var grids = new List<CrosswordGrid>();
+        var permutations = GeneratePermutations(words);
+
+        foreach (var permutation in permutations)
+        {
+            var candidates = new List<CrosswordGrid>();
+
+            if (!TryGenerateFromWordPermutation(permutation, candidates)) continue;
+            
+            foreach (var candidate in candidates)
+            {
+                candidate.FixPositions();
+                grids.Add(candidate);
+            }
+        }
+
+        return grids;
     }
 
 

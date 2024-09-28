@@ -11,7 +11,7 @@ var time = (DateTime.Now - start).TotalSeconds;
 if (success)
 {
     Console.WriteLine("===================== BEST LEVEL ===================");
-    grid.Print();
+    Console.WriteLine(grid);
 }
 
 Console.WriteLine($"Took {time:f2} seconds.");
