@@ -1,4 +1,5 @@
-﻿using Crossword_Generator;
+﻿using System;
+using Crossword_Generator;
 
 var words = new []{"Boğa", "Boza", "Bağ", "Boz", "Baz", "Oba", "Boğaz"};
 
